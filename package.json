@@ -1,0 +1,32 @@
+{
+  "name": "cra-component",
+  "version": "1.0.0",
+  "description": "CLI for creating components within React-application built with Create-React-App",
+  "main": "cli.js",
+  "scripts": {
+    "start": "node cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "cra-component": "./cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daminort/cra-component.git"
+  },
+  "keywords": [
+    "CLI",
+    "create-react-app",
+    "react",
+    "components"
+  ],
+  "author": "Daminort",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daminort/cra-component/issues"
+  },
+  "homepage": "https://github.com/daminort/cra-component#readme",
+  "dependencies": {
+    "inquirer": "^6.2.1"
+  }
+}
