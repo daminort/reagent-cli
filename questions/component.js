@@ -1,20 +1,29 @@
 const choicesComponent = require('../choices/component');
+const choicesBool = require('../choices/bool');
+const { validateName } = require('../helpers/validators');
+const { confirmMessage }= require('../helpers/questions');
 
 const questionsComponent = [
   {
-    name: 'componentType',
+    name: 'templateName',
     type: 'list',
     message: 'What type of component would you like to create?',
     choices: choicesComponent
-  },
-  {
-    name: 'componentName',
+  }, {
+    name: 'name',
     type: 'input',
     message: 'Component name:',
-    validate: function (input) {
-      if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
-      else return 'Component name may only include letters, numbers, underscores and hashes.';
-    }
+    validate: validateName,
+  }, {
+    name: 'location',
+    type: 'input',
+    message: 'Component location (include src part):',
+    default: 'src/components',
+  }, {
+    name: 'correct',
+    type: 'list',
+    message: confirmMessage,
+    choices: choicesBool,
   },
 ];
 

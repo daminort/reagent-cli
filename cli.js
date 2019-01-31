@@ -4,7 +4,8 @@ const inquirer           = require('inquirer');
 const questionsCommon    = require('./questions/common');
 const questionsComponent = require('./questions/component');
 
-const { TYPES }          = require('./constants/common');
+const { TYPES, BOOL }    = require('./constants/common');
+const { copyTemplate }   = require('./helpers/fs');
 
 // Grab arguments
 //const [,, ...args] = process.argv;
@@ -21,7 +22,11 @@ inquirer.prompt(questionsCommon)
         inquirer.prompt(questionsComponent)
           .then(answers => {
             resultAnswers = { ...resultAnswers, ...answers };
-            console.log(resultAnswers);
+            const { correct } = resultAnswers;
+            if (correct === BOOL.no) {
+              process.exit(0);
+            }
+            copyTemplate(resultAnswers);
           });
         break;
       }
