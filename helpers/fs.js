@@ -16,6 +16,10 @@ function copyTemplate(answers) {
     console.log(err);
     process.exit(err.code);
   }
+
+  console.log('');
+  console.log('Great! We have done it :)');
+  console.log('');
 }
 
 function createDirs(path, root) {

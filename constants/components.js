@@ -1,6 +1,8 @@
 const COMPONENT_TYPES = {
-  funcComponent       : 'FuncComponent',
-  funcComponentStyled : 'FuncComponentStyled',
+  funcComponent            : 'FuncComponent',
+  funcComponentStyled      : 'FuncComponentStyled',
+  funcComponentRedux       : 'FuncComponentRedux',
+  funcComponentReduxStyled : 'FuncComponentReduxStyled',
 };
 
 module.exports = {

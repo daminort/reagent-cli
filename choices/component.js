@@ -7,6 +7,12 @@ const choicesComponent = [
   }, {
     value: COMPONENT_TYPES.funcComponentStyled,
     name: 'Functional component (with styled wrapper)',
+  }, {
+    value: COMPONENT_TYPES.funcComponentRedux,
+    name: 'Functional component (with connecting to Redux)',
+  }, {
+    value: COMPONENT_TYPES.funcComponentReduxStyled,
+    name: 'Functional component (with connecting to Redux and styled wrapper)',
   },
 ];
 
