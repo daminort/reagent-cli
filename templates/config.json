@@ -1,0 +1,65 @@
+{
+  "templates": [
+    {
+      "type": "FuncComponent",
+      "description": "Functional component",
+      "path": "components/FuncComponent",
+      "rename": true
+    }, {
+      "type": "FuncComponentStyled",
+      "description": "Functional component (+ styled Wrapper)",
+      "path": "components/FuncComponentStyled",
+      "rename": true
+    }, {
+      "type": "ClassComponent",
+      "description": "Class-based component",
+      "path": "components/ClassComponent",
+      "rename": true
+    }, {
+      "type": "ClassComponentStyled",
+      "description": "Class-based component (+ styled Wrapper)",
+      "path": "components/ClassComponentStyled",
+      "rename": true
+    }, {
+      "type": "FuncContainerRedux",
+      "description": "Functional container (+ Redux)",
+      "path": "containers/FuncContainerRedux",
+      "rename": true
+    }, {
+      "type": "FuncContainerReduxStyled",
+      "description": "Functional container (+ Redux and styled Wrapper)",
+      "path": "containers/FuncContainerReduxStyled",
+      "rename": true
+    }, {
+      "type": "ClassContainerRedux",
+      "description": "Class-based container (+ Redux)",
+      "path": "containers/ClassContainerRedux",
+      "rename": true
+    }, {
+      "type": "ClassContainerReduxStyled",
+      "description": "Class-based container (+ Redux and styled Wrapper)",
+      "path": "containers/ClassContainerReduxStyled",
+      "rename": true
+    }, {
+      "type": "Redux",
+      "description": "Redux actions + Reducer",
+      "path": "redux/Redux",
+      "rename": true
+    }, {
+      "type": "ReduxImmutable",
+      "description": "Redux actions + Immutable reducer",
+      "path": "redux/ReduxImmutable",
+      "rename": true
+    }, {
+      "type": "ReduxSaga",
+      "description": "Redux actions + Reducer + Saga",
+      "path": "redux/ReduxSaga",
+      "rename": true
+    }, {
+      "type": "ReduxImmutableSaga",
+      "description": "Redux actions + Immutable reducer + Saga",
+      "path": "redux/ReduxImmutableSaga",
+      "rename": true
+    }
+  ]
+}

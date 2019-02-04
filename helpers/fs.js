@@ -65,10 +65,10 @@ function copyTemplateContent(templatePath, targetPath, templateName = '', name =
     const stats = fs.statSync(originFilePath);
 
     if (stats.isDirectory()) {
-      const newTargetPath = `${targetPath}/fileName`;
+      const newTargetPath = `${targetPath}/${fileName}`;
       fs.mkdirSync(newTargetPath);
 
-      createDirectoryContents(originFilePath, newTargetPath);
+      copyTemplateContent(originFilePath, newTargetPath);
       return;
     }
 
@@ -89,4 +89,6 @@ function copyTemplateContent(templatePath, targetPath, templateName = '', name =
 
 module.exports = {
   copyTemplate,
+  createDirs,
+  copyTemplateContent,
 }
