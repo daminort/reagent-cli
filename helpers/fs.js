@@ -1,5 +1,6 @@
 const fs = require('fs');
-const { TYPE, TYPE_PATH } = require('../constants/common');
+const chalk = require('chalk');
+const { TYPE_PATH } = require('../constants/common');
 
 function copyTemplate(answers) {
   const cwd = process.cwd();
@@ -18,7 +19,7 @@ function copyTemplate(answers) {
   }
 
   console.log('');
-  console.log('Great! We have done it :)');
+  console.log(chalk.bold.green('  Great! We have done it :)'));
   console.log('');
 }
 
@@ -43,7 +44,7 @@ function createDirs(path, root) {
   });
 
   if (isCreated) {
-    console.log(`Created folder: ${targetPath}`);
+    console.log(`  Created folder: ${targetPath}`);
   }
 }
 
@@ -77,7 +78,7 @@ function copyTemplateContent(templatePath, targetPath, templateName = '', name =
     
     fs.writeFileSync(resultFilePath, resultContent, 'utf8');
 
-    console.log(`Created file: ${resultFilePath}`);
+    console.log(`  Created file: ${resultFilePath}`);
   });
 }
 
