@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import actions from '../redux/FuncComponentRedux/actions';
+import actions from '../redux/FuncContainerRedux/actions';
 
-const FuncComponentRedux = ({ id, name, setName }) => {
+const FuncContainerRedux = ({ id, name, setName }) => {
 
   return (
     <div id={id} onClick={setName}>
@@ -13,21 +13,21 @@ const FuncComponentRedux = ({ id, name, setName }) => {
   );
 };
 
-FuncComponentRedux.propTypes = {
+FuncContainerRedux.propTypes = {
   id   : PropTypes.string,
   name : PropTypes.string,
 };
 
-FuncComponentRedux.defaultProps = {
+FuncContainerRedux.defaultProps = {
   id   : 'id',
   name : '',
 };
 
 const mapStateToProps = state => {
-  const { FuncComponentRedux } = state;
+  const { FuncContainerRedux } = state;
 
   return {
-    name: FuncComponentRedux.name,
+    name: FuncContainerRedux.name,
   };
 };
 
@@ -35,12 +35,12 @@ const mapDispatchToProps = {
   setName: actions.setName,
 };
 
-const connectedFuncComponentRedux = connect(
+const connectedFuncContainerRedux = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(FuncComponentRedux);
+)(FuncContainerRedux);
 
 // because of: https://github.com/reduxjs/react-redux/issues/111#issuecomment-140744686
-connectedFuncComponentRedux.defaultProps = FuncComponentRedux.defaultProps;
+connectedFuncContainerRedux.defaultProps = FuncContainerRedux.defaultProps;
 
-export default connectedFuncComponentRedux;
+export default FuncContainerRedux;

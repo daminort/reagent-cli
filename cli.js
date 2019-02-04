@@ -3,6 +3,8 @@ const inquirer           = require('inquirer');
 
 const questionsCommon    = require('./questions/common');
 const questionsComponent = require('./questions/component');
+const questionsContainer = require('./questions/container');
+const questionsRedux     = require('./questions/redux');
 
 const { TYPES, BOOL }    = require('./constants/common');
 const { copyTemplate }   = require('./helpers/fs');
@@ -17,31 +19,32 @@ inquirer.prompt(questionsCommon)
     resultAnswers = { ...answers };
     const { type } = resultAnswers;
 
+    let questions = null;
     switch (type) {
-      case TYPES.component: {
-        inquirer.prompt(questionsComponent)
-          .then(answers => {
-            resultAnswers = { ...resultAnswers, ...answers };
-            const { correct } = resultAnswers;
-            if (correct === BOOL.no) {
-              process.exit(0);
-            }
-            copyTemplate(resultAnswers);
-          });
+      case TYPES.component: 
+        questions = questionsComponent;
         break;
-      }
-      case TYPES.container: {
-        console.log('Sorry, this functionality is developing. Current answers:');
-        console.log(resultAnswers);
+      case TYPES.container: 
+        questions = questionsContainer;
         break;
-      }
-      case TYPES.reduxSection: {
-        console.log('Sorry, this functionality is developing. Current answers:');
-        console.log(resultAnswers);
+      case TYPES.reduxSection: 
+        questions = questionsRedux;
         break;
-      }
-      default: {
-        console.log('Unknown type of creature');
-      }
+      default:
     }
+
+    if (!questions) {
+      console.log('Unknown type of creature');
+      process.exit(0);
+    }
+
+    inquirer.prompt(questions)
+      .then(answers => {
+        resultAnswers = { ...resultAnswers, ...answers };
+        const { correct } = resultAnswers;
+        if (correct === BOOL.no) {
+          process.exit(0);
+        }
+        copyTemplate(resultAnswers);
+      });
 });
