@@ -1,50 +1,47 @@
 #!/usr/bin/env node
-const inquirer           = require('inquirer');
+const program  = require('commander');
+const pkg = require('./package.json');
+const { create } = require('./reagent/create');
+const { eject } = require('./reagent/eject');
 
-const questionsCommon    = require('./questions/common');
-const questionsComponent = require('./questions/component');
-const questionsContainer = require('./questions/container');
-const questionsRedux     = require('./questions/redux');
+// Usage
+program.usage(`
+  Reagent
+    reagent <cmd> --option
 
-const { TYPES, BOOL }    = require('./constants/common');
-const { copyTemplate }   = require('./helpers/fs');
+  Examples:
+    reagent create
+    reagent eject --path=./InnerTemplates
+    reagent set --path=./MyTemplates
+  
+  For additional info, please, visit to ${pkg.homepage}
+`);
 
-// Grab arguments
-//const [,, ...args] = process.argv;
+// Version & Description
+program.version(pkg.version)
+program.description(pkg.description);
 
-let resultAnswers = {};
+// Options
+program.option('-p, --path', 'Path for ejecting inner templates or set custom user templates')
 
-inquirer.prompt(questionsCommon)
-  .then(answers => {
-    resultAnswers = { ...answers };
-    const { type } = resultAnswers;
+// Commands
+program
+  .command('create')
+  .alias('new')
+  .description('Creating new component/container/redux section')
+  .action(() => {
+    create();
+  });
 
-    let questions = null;
-    switch (type) {
-      case TYPES.component: 
-        questions = questionsComponent;
-        break;
-      case TYPES.container: 
-        questions = questionsContainer;
-        break;
-      case TYPES.reduxSection: 
-        questions = questionsRedux;
-        break;
-      default:
-    }
+program
+  .command('eject')
+  .description('Ejecting inner templates to folder with theirs config file')
+  .action(pathname => {
+    eject(pathname);
+  });
 
-    if (!questions) {
-      console.log('Unknown type of creature');
-      process.exit(0);
-    }
+program.parse(process.argv);
 
-    inquirer.prompt(questions)
-      .then(answers => {
-        resultAnswers = { ...resultAnswers, ...answers };
-        const { correct } = resultAnswers;
-        if (correct === BOOL.no) {
-          process.exit(0);
-        }
-        copyTemplate(resultAnswers);
-      });
-});
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+};

@@ -63,7 +63,12 @@ function copyTemplateContent(templatePath, targetPath, templateName = '', name =
 
     const originFilePath = `${templatePath}/${fileName}`;
     const stats = fs.statSync(originFilePath);
-    if (!stats.isFile()) {
+
+    if (stats.isDirectory()) {
+      const newTargetPath = `${targetPath}/fileName`;
+      fs.mkdirSync(newTargetPath);
+
+      createDirectoryContents(originFilePath, newTargetPath);
       return;
     }
 
