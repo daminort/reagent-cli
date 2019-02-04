@@ -1,5 +1,5 @@
 {
-  "name": "cra-component",
+  "name": "reagent-cli",
   "version": "1.0.0",
   "description": "CLI for creating components within React-application built with Create-React-App",
   "main": "cli.js",
@@ -8,11 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "cra-component": "./cli.js"
+    "reagent": "./cli.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/daminort/cra-component.git"
+    "url": "git+https://github.com/daminort/reagent-cli.git"
   },
   "keywords": [
     "CLI",
@@ -21,11 +21,11 @@
     "components"
   ],
   "author": "Daminort",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/daminort/cra-component/issues"
+    "url": "https://github.com/daminort/reagent-cli/issues"
   },
-  "homepage": "https://github.com/daminort/cra-component#readme",
+  "homepage": "https://github.com/daminort/reagent-cli#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "inquirer": "^6.2.1",
