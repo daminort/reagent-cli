@@ -3,6 +3,7 @@ const program  = require('commander');
 const pkg = require('./package.json');
 const { create } = require('./reagent/create');
 const { eject } = require('./reagent/eject');
+const { setPath } = require('./reagent/paths');
 
 // Usage
 program.usage(`
@@ -35,6 +36,28 @@ program
   .description('Ejecting inner templates to folder with theirs config file')
   .action(pathname => {
     eject(pathname);
+  });
+
+program
+  .command('path')
+  .description('Setting path to user defined templates')
+  .action(pathname => {
+    setPath(pathname);
+  });
+
+program
+  .command('current')
+  .description('Setting path to user defined templates: current working directory')
+  .action(() => {
+    const pathname = process.cwd();
+    setPath(pathname);
+  });
+
+program
+  .command('clear')
+  .description('Removing from configs path to user defined templates')
+  .action(() => {
+    setPath('');
   });
 
 program.parse(process.argv);
