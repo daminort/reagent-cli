@@ -2,8 +2,9 @@ const chalk = require('chalk');
 const config = require('../helpers/conf');
 const { createDirs, copyTemplateContent } = require('../helpers/fs');
 
-function eject(pathname) {
+function eject() {
 
+  const pathname = 'templates';
   const cwd = process.cwd();
   createDirs(pathname, cwd);
 

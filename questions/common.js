@@ -1,4 +1,16 @@
+
+const inquirer = require('inquirer');
 const choicesCommon = require('../choices/common');
+const { isUserTemplates } = require('../helpers/userTemplates');
+const { TYPES } = require('../constants/common');
+
+if (isUserTemplates()) {
+  choicesCommon.unshift(new inquirer.Separator());
+  choicesCommon.unshift({
+    value: TYPES.userTemplate,
+    name: 'User defined template',
+  });
+}
 
 const questionsCommon = [
   {

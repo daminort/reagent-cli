@@ -34,8 +34,8 @@ program
 program
   .command('eject')
   .description('Ejecting inner templates to folder with theirs config file')
-  .action(pathname => {
-    eject(pathname);
+  .action(() => {
+    eject();
   });
 
 program

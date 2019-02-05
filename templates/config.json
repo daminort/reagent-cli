@@ -4,73 +4,61 @@
       "type": "FuncComponent",
       "description": "Functional component",
       "path": "components/FuncComponent",
-      "location": "src/components",
       "rename": true
     }, {
       "type": "FuncComponentStyled",
       "description": "Functional component (+ styled Wrapper)",
       "path": "components/FuncComponentStyled",
-      "location": "src/components",
       "rename": true
     }, {
       "type": "ClassComponent",
       "description": "Class-based component",
       "path": "components/ClassComponent",
-      "location": "src/components",
       "rename": true
     }, {
       "type": "ClassComponentStyled",
       "description": "Class-based component (+ styled Wrapper)",
       "path": "components/ClassComponentStyled",
-      "location": "src/components",
       "rename": true
     }, {
       "type": "FuncContainerRedux",
       "description": "Functional container (+ Redux)",
       "path": "containers/FuncContainerRedux",
-      "location": "src/containers",
       "rename": true
     }, {
       "type": "FuncContainerReduxStyled",
       "description": "Functional container (+ Redux and styled Wrapper)",
       "path": "containers/FuncContainerReduxStyled",
-      "location": "src/containers",
       "rename": true
     }, {
       "type": "ClassContainerRedux",
       "description": "Class-based container (+ Redux)",
       "path": "containers/ClassContainerRedux",
-      "location": "src/containers",
       "rename": true
     }, {
       "type": "ClassContainerReduxStyled",
       "description": "Class-based container (+ Redux and styled Wrapper)",
       "path": "containers/ClassContainerReduxStyled",
-      "location": "src/containers",
       "rename": true
     }, {
       "type": "Redux",
       "description": "Redux actions + Reducer",
       "path": "redux/Redux",
-      "location": "src/redux",
       "rename": true
     }, {
       "type": "ReduxImmutable",
       "description": "Redux actions + Immutable reducer",
       "path": "redux/ReduxImmutable",
-      "location": "src/redux",
       "rename": true
     }, {
       "type": "ReduxSaga",
       "description": "Redux actions + Reducer + Saga",
       "path": "redux/ReduxSaga",
-      "location": "src/redux",
       "rename": true
     }, {
       "type": "ReduxImmutableSaga",
       "description": "Redux actions + Immutable reducer + Saga",
       "path": "redux/ReduxImmutableSaga",
-      "location": "src/redux",
       "rename": true
     }
   ]

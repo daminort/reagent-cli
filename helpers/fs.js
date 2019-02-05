@@ -1,7 +1,8 @@
 const fs = require('fs');
 const chalk = require('chalk');
-const config = require('../helpers/conf');
-const { TYPE_PATH } = require('../constants/common');
+const config = require('./conf');
+const { TYPES, TYPE_PATH } = require('../constants/common');
+const { readUserTemplates } = require('./userTemplates');
 
 function copyTemplate(answers) {
   const cwd = process.cwd();
@@ -9,10 +10,15 @@ function copyTemplate(answers) {
 
   const templatePath = getTemplatePath(type, templateName);
   const targetPath   = `${location}/${name}`;
+  const needReplace  = checkNeedReplaceTemplateName(type, templateName);
 
   try {
     createDirs(targetPath, cwd);
-    copyTemplateContent(templatePath, targetPath, templateName, name);
+    if (needReplace) {
+      copyTemplateContent(templatePath, targetPath, templateName, name);
+    } else {
+      copyTemplateContent(templatePath, targetPath);
+    }
 
   } catch (err) {
     console.log(err);
@@ -52,9 +58,20 @@ function createDirs(path, root) {
 function getTemplatePath(type, templateName) {
   const templatesPath = config.templatesPath;
   const typePath = TYPE_PATH[type];
-  const result = `${templatesPath}/${typePath}/${templateName}`;
 
-  return result;
+  if (typePath !== TYPE_PATH.userTemplate) {
+    return `${templatesPath}/${typePath}/${templateName}`;
+  }
+
+  const templates = readUserTemplates();
+  const currentTemplate = templates.find(item => item.type === templateName);
+  if (!currentTemplate) {
+    throw new Error(`Unknown user template ${templateName}`);
+  }
+
+  const userTemplatesPath = config.userTemplatesPath;
+
+  return `${userTemplatesPath}/${currentTemplate.path}`;
 }
 
 function copyTemplateContent(templatePath, targetPath, templateName = '', name = '') {
@@ -86,6 +103,20 @@ function copyTemplateContent(templatePath, targetPath, templateName = '', name =
 
     console.log(`  Created file: ${resultFilePath}`);
   });
+}
+
+function checkNeedReplaceTemplateName(type, templateName) {
+  if (type !== TYPES.userTemplate) {
+    return true;
+  }
+
+  const templates = readUserTemplates();
+  const currentTemplate = templates.find(item => item.type === templateName);
+  if (!currentTemplate) {
+    return false;
+  }
+
+  return currentTemplate.rename;
 }
 
 module.exports = {

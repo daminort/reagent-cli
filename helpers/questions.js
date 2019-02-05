@@ -1,19 +1,19 @@
 const chalk = require('chalk');
 const { CONFIRM } = require('../constants/confirm');
 
-function confirmMessage(answers) {
+function confirmMessage(answers, userTemplates = null) {
   console.log('');
   console.log(chalk.bold.blue('  We are ready to start. Is all data correct?'));
   console.log('');
 
-  const messages = formatAnswers(answers);
+  const messages = formatAnswers(answers, userTemplates);
   messages.forEach(item => {
     console.log(item);
   });
   console.log('');
 }
 
-function formatAnswers(answers) {
+function formatAnswers(answers, userTemplates = null) {
   const keys = Object.keys(answers);
   const maxLength = keys.reduce((length, key) => {
     const keyString = CONFIRM[key] || key;
@@ -28,12 +28,27 @@ function formatAnswers(answers) {
     const spaceCount = maxLength - keyString.length;
     const spaces = Array(spaceCount).fill(' ').join('');
     const value = answers[key];
-    const valueString = CONFIRM[value] || value;
+    const valueString = userTemplates
+      ? userTemplateValue(value, userTemplates) || value
+      : CONFIRM[value] || value;
 
     return `  ${chalk.bold(keyString)} ${spaces}: ${valueString}`;
   });
 
   return result;
+}
+
+function userTemplateValue(type, userTemplates) {
+  if (!userTemplates) {
+    return null;
+  }
+
+  const currentTemplate = userTemplates.find(item => item.type === type);
+  if (!currentTemplate) {
+    return null;
+  }
+  
+  return currentTemplate.description;
 }
 
 module.exports = {

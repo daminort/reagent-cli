@@ -2,12 +2,14 @@ const TYPES = {
   component    : 'component',
   container    : 'container',
   reduxSection : 'reduxSection',
+  userTemplate : 'userTemplate',
 };
 
 const TYPE_PATH = {
   component    : 'components',
   container    : 'containers',
   reduxSection : 'redux',
+  userTemplate : 'userTemplate',
 };
 
 const BOOL = {

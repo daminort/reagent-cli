@@ -1,12 +1,13 @@
-const inquirer           = require('inquirer');
+const inquirer                = require('inquirer');
 
-const questionsCommon    = require('../questions/common');
-const questionsComponent = require('../questions/component');
-const questionsContainer = require('../questions/container');
-const questionsRedux     = require('../questions/redux');
+const questionsCommon         = require('../questions/common');
+const questionsComponent      = require('../questions/component');
+const questionsContainer      = require('../questions/container');
+const questionsRedux          = require('../questions/redux');
 
-const { TYPES, BOOL }    = require('../constants/common');
-const { copyTemplate }   = require('../helpers/fs');
+const { TYPES, BOOL }         = require('../constants/common');
+const { copyTemplate }        = require('../helpers/fs');
+const { createUserQuestions } = require('../helpers/userTemplates');
 
 function create() {
 
@@ -27,6 +28,9 @@ function create() {
           break;
         case TYPES.reduxSection: 
           questions = questionsRedux;
+          break;
+        case TYPES.userTemplate: 
+          questions = createUserQuestions();
           break;
         default:
       }
