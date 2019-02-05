@@ -11,8 +11,8 @@ program.usage(`
 
   Examples:
     reagent create
-    reagent eject --path=./InnerTemplates
-    reagent set --path=./MyTemplates
+    reagent eject ./InnerTemplates
+    reagent set ./MyTemplates
   
   For additional info, please, visit to ${pkg.homepage}
 `);
@@ -20,9 +20,6 @@ program.usage(`
 // Version & Description
 program.version(pkg.version)
 program.description(pkg.description);
-
-// Options
-program.option('-p, --path', 'Path for ejecting inner templates or set custom user templates')
 
 // Commands
 program

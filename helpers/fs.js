@@ -1,5 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
+const config = require('../helpers/conf');
 const { TYPE_PATH } = require('../constants/common');
 
 function copyTemplate(answers) {
@@ -49,7 +50,7 @@ function createDirs(path, root) {
 }
 
 function getTemplatePath(type, templateName) {
-  const templatesPath = `${__dirname}/../templates`;
+  const templatesPath = config.templatesPath;
   const typePath = TYPE_PATH[type];
   const result = `${templatesPath}/${typePath}/${templateName}`;
 
