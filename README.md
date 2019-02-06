@@ -49,13 +49,13 @@ $ reagent create
 
 ## Commands (brief overview)
 <a name="commands"></a>
-Command | Alias | Options | Description
---------|-------|---------|------------
-**create**|**new**||Creating component, container, redux section or anything else from user defined templates in current working directory
-**eject**|||Ejecting inner templates into current working directory
-**current**|||Set absolute path to current working directory as path to folder with user defined templates
-**path**||pathname|Set absolute path to defined directory as path to folder with user defined templates
-**clear**|||Removing path to user defined temlates from config of **`reagent`**
+| Command | Alias | Options | Description |
+| ------- | ----- | ------- | ----------- |
+|**create**|**new**||Creating component, container, redux section or anything else from user defined templates in current working directory|
+|**eject**|||Ejecting inner templates into current working directory|
+|**current**|||Set absolute path to current working directory as path to folder with user defined templates|
+|**path**||pathname|Set absolute path to defined directory as path to folder with user defined templates|
+|**clear**|||Removing path to user defined temlates from config of **`reagent`**|
 
 ## Commands Documentation
 <a name="commands-doc"></a>
