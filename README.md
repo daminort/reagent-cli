@@ -76,7 +76,7 @@ In the section **Type of template** you can choose one of the following options:
 
 In the section **Template parameters** you have to answer next questions:
 - **Template Name**: you can choose needed template from the list of available ones
-- **Name**: it will be used for naming target folder and replacing template name within copied files)
+- **Name**: it will be used for naming target folder and replacing template name within copied files
 - **Location**: a relative path from current working directory. Content of template will be copied into the pointed folder. If target folder doesn't exist, it will be created
 - Checking and confirmation chosen options
 
@@ -248,3 +248,6 @@ Template description fields mean:
 - **rename**: a flag that defines if rename files of template and names within them in according to entered Name
 
 You can get an example of `config.json` by command `reagent eject`
+
+## License
+Reagent is open source software [licensed as MIT](/LICENSE).
