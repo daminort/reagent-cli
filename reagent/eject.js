@@ -1,19 +1,19 @@
 const chalk = require('chalk');
-const config = require('../helpers/conf');
-const { createDirs, copyTemplateContent } = require('../helpers/fs');
+const ConfigUtils = require('../utils/ConfigUtils');
+const FileUtils = require('../utils/FileUtils');
 
 function eject() {
 
   const pathname = 'templates';
-  const cwd = process.cwd();
-  createDirs(pathname, cwd);
+  const cwd = ConfigUtils.cwd;
+  FileUtils.createDirs(pathname, ConfigUtils.cwd);
 
-  const templatesPath = config.templatesPath;
+  const templatesPath = ConfigUtils.templatesPath;
   const targetPath    = `${cwd}/${pathname}`;
-  copyTemplateContent(templatesPath, targetPath);
+  FileUtils.copyTemplateContent(templatesPath, targetPath);
 
-  config.setValue('userTemplatesPath', targetPath);
-  config.save();
+  ConfigUtils.setSettingsValue('userTemplatesPath', targetPath);
+  ConfigUtils.saveSettings();
 
   console.log('');
   console.log(chalk.bold.green('  All templates are successfully ejected'));

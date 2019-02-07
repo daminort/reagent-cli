@@ -1,6 +1,6 @@
 {
   "name": "reagent-cli",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "CLI for creating components within React-application built with Create-React-App (and not only)",
   "main": "cli.js",
   "scripts": {

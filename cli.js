@@ -3,7 +3,10 @@ const program  = require('commander');
 const pkg = require('./package.json');
 const { create } = require('./reagent/create');
 const { eject } = require('./reagent/eject');
-const { setPath } = require('./reagent/paths');
+const { setValue } = require('./reagent/settings');
+
+const userTemplatesPath = 'userTemplatesPath';
+const showInfo          = 'showInfo';
 
 // Usage
 program.usage(`
@@ -12,8 +15,6 @@ program.usage(`
 
   Examples:
     reagent create
-    reagent eject ./InnerTemplates
-    reagent set ./MyTemplates
   
   For additional info, please, visit to ${pkg.homepage}
 `);
@@ -42,7 +43,7 @@ program
   .command('path')
   .description('Setting path to user defined templates')
   .action(pathname => {
-    setPath(pathname);
+    setValue(userTemplatesPath, pathname);
   });
 
 program
@@ -50,14 +51,27 @@ program
   .description('Setting path to user defined templates: current working directory')
   .action(() => {
     const pathname = process.cwd();
-    setPath(pathname);
+    setValue(userTemplatesPath, pathname);
   });
 
 program
   .command('clear')
   .description('Removing from configs path to user defined templates')
   .action(() => {
-    setPath('');
+    setValue(userTemplatesPath, '');
+  });
+
+program
+  .command('info')
+  .description('Toogle showing info during copying templates. Options: [on | off]')
+  .action((rawValue) => {
+    const value = rawValue.toLowerCase();
+    if (value !== 'on' && value !== 'off') {
+      console.log('Invalid parameter. Must be "on" or "off"');
+      return;
+    }
+    const result = (value === 'on') ? true : false;
+    setValue(showInfo, result);
   });
 
 program.parse(process.argv);
