@@ -1,36 +1,36 @@
-const inquirer                = require('inquirer');
-
-const questionsCommon         = require('../questions/common');
-const questionsComponent      = require('../questions/component');
-const questionsContainer      = require('../questions/container');
-const questionsRedux          = require('../questions/redux');
-
-const { TYPES, BOOL }         = require('../constants/common');
-const { copyTemplate }        = require('../helpers/fs');
-const { createUserQuestions } = require('../helpers/userTemplates');
+const inquirer = require('inquirer');
+const FileUtils = require('../utils/FileUtils');
+const { ENTITY_TYPES, BOOL } = require('../config/constants');
+const {
+  questionsStart,
+  questionsComponent,
+  questionsContainer,
+  questionsReduxSection,
+  questionsUserTemplates,
+} = require('../config/questions');
 
 function create() {
 
   let resultAnswers = {};
 
-  inquirer.prompt(questionsCommon)
+  inquirer.prompt(questionsStart)
     .then(answers => {
       resultAnswers = { ...answers };
       const { type } = resultAnswers;
 
       let questions = null;
       switch (type) {
-        case TYPES.component: 
+        case ENTITY_TYPES.component: 
           questions = questionsComponent;
           break;
-        case TYPES.container: 
+        case ENTITY_TYPES.container: 
           questions = questionsContainer;
           break;
-        case TYPES.reduxSection: 
-          questions = questionsRedux;
+        case ENTITY_TYPES.reduxSection: 
+          questions = questionsReduxSection;
           break;
-        case TYPES.userTemplate: 
-          questions = createUserQuestions();
+        case ENTITY_TYPES.userTemplate: 
+          questions = questionsUserTemplates;
           break;
         default:
       }
@@ -47,7 +47,7 @@ function create() {
           if (correct === BOOL.no) {
             process.exit(0);
           }
-          copyTemplate(resultAnswers);
+          FileUtils.copyTemplate(resultAnswers);
         });
   });
 }
