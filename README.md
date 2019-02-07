@@ -22,7 +22,7 @@ $ npm install -g reagent-cli
 ```
 
 > **Note:** Due to **`reagent`** is still in development stage, there is no way to install it from `npm` registry.
-> For using it you can now clone this repository and create synbol link as shown below:
+> For using it you can now clone this repository and create virtual link as shown below:
 > ```shell
 > $ git clone https://github.com/daminort/reagent-cli.git
 > $ cd reagent-cli
@@ -57,6 +57,7 @@ $ reagent create
 |**current**| | |Set absolute path to current working directory as path to folder with user defined templates|
 |**path**| |pathname|Set absolute path to defined directory as path to folder with user defined templates|
 |**clear**| | |Removing path to user defined temlates from config of **`reagent`**|
+|**info**| | on/off |Toogle showing information about created files and folders|
 
 
 ## Commands Documentation
@@ -133,6 +134,16 @@ The **`clear`** command allows you to define path to folder with user defined te
 Usage:
 ```shell
 $ reagent clear
+```
+
+### info <mode>
+
+The **`info`** command allows you to handle whether an information about created files and folder be shown in console
+
+Usage:
+```shell
+$ reagent info on
+$ reagent info off
 ```
 
 ## Inner templates
@@ -248,6 +259,10 @@ Template description fields mean:
 - **rename**: a flag that defines if rename files of template and names within them in according to entered Name
 
 You can get an example of `config.json` by command `reagent eject`
+
+## Change Log
+- 2019-02-08, v2.0.0: Full refactoring project structure, added new setting option `showInfo`
+- 2019-02-06, v1.0.0: Project is finished with necessary features
 
 ## License
 Reagent is open source software [licensed as MIT](/LICENSE).
