@@ -10,8 +10,8 @@ const {
 // Start ----------------------------------------------------------------------
 const choicesStart = [
   { value: ENTITY_TYPES.component,    name: ENTITY_NAMES.component    }, 
-  { value: ENTITY_TYPES.container,    name: ENTITY_TYPES.container    }, 
-  { value: ENTITY_TYPES.reduxSection, name: ENTITY_TYPES.reduxSection },
+  { value: ENTITY_TYPES.container,    name: ENTITY_NAMES.container    }, 
+  { value: ENTITY_TYPES.reduxSection, name: ENTITY_NAMES.reduxSection },
 ];
 
 // check if there are user defined templates and add them to start choices
