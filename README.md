@@ -21,8 +21,8 @@ or if you want to install it globally
 $ npm install -g reagent-cli
 ```
 
-> **Note:** Due to **`reagent`** is still in development stage, there is no way to install it from `npm` registry.
-> For using it you can now clone this repository and create virtual link as shown below:
+> **Note**
+> For using it in development mode you can just clone this repository and create virtual link as shown below:
 > ```shell
 > $ git clone https://github.com/daminort/reagent-cli.git
 > $ cd reagent-cli

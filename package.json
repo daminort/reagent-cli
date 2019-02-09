@@ -4,8 +4,7 @@
   "description": "CLI for creating components within React-application built with Create-React-App (and not only)",
   "main": "cli.js",
   "scripts": {
-    "start": "node cli.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node cli.js"
   },
   "bin": {
     "reagent": "./cli.js"
@@ -18,7 +17,7 @@
     "CLI",
     "create-react-app",
     "react",
-    "components"
+    "component"
   ],
   "author": "Daminort",
   "license": "MIT",
