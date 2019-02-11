@@ -1,3 +1,6 @@
+const inquirer = require('inquirer');
+const fuzzyPath = require('inquirer-fuzzy-path');
+
 const ConfigUtils = require('../utils/ConfigUtils');
 const ValidateUtils = require('../utils/ValidateUtils');
 const ConfirmUtils = require('../utils/ConfirmUtils');
@@ -15,6 +18,15 @@ const {
   choicesRedux,
 } = require('./choices');
 
+inquirer.registerPrompt('fuzzypath', fuzzyPath);
+
+const fuzzyPathOptions = {
+  excludePath : nodePath => nodePath.startsWith('node_modules'),
+  rootPath    : 'src',
+  itemType    : 'directory',
+  suggestOnly : true,
+};
+
 // Inner Templates ------------------------------------------------------------
 const questionsStart = [
   {
@@ -27,25 +39,26 @@ const questionsStart = [
 
 const questionsComponent = [
   {
-    name     : QUESTION_FIELDS.templateName,
-    type     : QUESTION_TYPES.list,
-    message  : QUESTION_MESSAGES.componentStart,
-    choices  : choicesComponent
+    name        : QUESTION_FIELDS.templateName,
+    type        : QUESTION_TYPES.list,
+    message     : QUESTION_MESSAGES.componentStart,
+    choices     : choicesComponent
   }, {
-    name     : QUESTION_FIELDS.name,
-    type     : QUESTION_TYPES.input,
-    message  : QUESTION_MESSAGES.componentName,
-    validate : ValidateUtils.validateName,
+    name        : QUESTION_FIELDS.name,
+    type        : QUESTION_TYPES.input,
+    message     : QUESTION_MESSAGES.componentName,
+    validate    : ValidateUtils.validateName,
   }, {
-    name     : QUESTION_FIELDS.location,
-    type     : QUESTION_TYPES.input,
-    message  : QUESTION_MESSAGES.componentLocation,
-    default  : ENTITY_LOCATION.component,
+    name        : QUESTION_FIELDS.location,
+    type        : QUESTION_TYPES.path,
+    message     : QUESTION_MESSAGES.componentLocation,
+    default     : ENTITY_LOCATION.component,
+    ...fuzzyPathOptions,
   }, {
-    name     : QUESTION_FIELDS.correct,
-    type     : QUESTION_TYPES.list,
-    message  : ConfirmUtils.confirmMessage,
-    choices  : choicesBoolean,
+    name        : QUESTION_FIELDS.correct,
+    type        : QUESTION_TYPES.list,
+    message     : ConfirmUtils.confirmMessage,
+    choices     : choicesBoolean,
   },
 ];
 
@@ -62,9 +75,10 @@ const questionsContainer = [
     validate : ValidateUtils.validateName,
   }, {
     name     : QUESTION_FIELDS.location,
-    type     : QUESTION_TYPES.input,
+    type     : QUESTION_TYPES.path,
     message  : QUESTION_MESSAGES.containerLocation,
     default  : ENTITY_LOCATION.container,
+    ...fuzzyPathOptions,
   }, {
     name     : QUESTION_FIELDS.correct,
     type     : QUESTION_TYPES.list,
@@ -86,9 +100,10 @@ const questionsReduxSection = [
     validate : ValidateUtils.validateName,
   }, {
     name     : QUESTION_FIELDS.location,
-    type     : QUESTION_TYPES.input,
-    message  : QUESTION_MESSAGES.location,
+    type     : QUESTION_TYPES.path,
+    message  : QUESTION_MESSAGES.reduxSectionLocation,
     default  : ENTITY_LOCATION.reduxSection,
+    ...fuzzyPathOptions,
   }, {
     name     : QUESTION_FIELDS.correct,
     type     : QUESTION_TYPES.list,
@@ -122,8 +137,9 @@ const questionsUserTemplates = [
     validate : ValidateUtils.validateName,
   }, {
     name     : QUESTION_FIELDS.location,
-    type     : QUESTION_TYPES.input,
+    type     : QUESTION_TYPES.path,
     message  : QUESTION_MESSAGES.userTemplateLocation,
+    ...fuzzyPathOptions,
   }, {
     name     : QUESTION_FIELDS.correct,
     type     : QUESTION_TYPES.list,
