@@ -261,6 +261,7 @@ Template description fields mean:
 You can get an example of `config.json` by command `reagent eject`
 
 ## Change Log
+- 2019-02-08, v2.1.0: Added plugin `inquirer-fuzzy-path` to simplify path input. Minor bug fix
 - 2019-02-08, v2.0.0: Full refactoring project structure, added new setting option `showInfo`
 - 2019-02-06, v1.0.0: Project is finished with necessary features
 

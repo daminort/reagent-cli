@@ -50,9 +50,9 @@ const ENTITY_PATH = {
 };
 
 const ENTITY_LOCATION = {
-  component    : 'src/components',
-  container    : 'src/containers',
-  reduxSection : 'src/redux',
+  component    : 'src/components/',
+  container    : 'src/containers/',
+  reduxSection : 'src/redux/',
   userTemplate : '',
 };
 
@@ -64,6 +64,7 @@ const BOOL = {
 const QUESTION_TYPES = {
   list  : 'list',
   input : 'input',
+  path  : 'fuzzypath',
 };
 
 const QUESTION_FIELDS = {
